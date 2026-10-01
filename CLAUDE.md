@@ -14,6 +14,8 @@ This document provides comprehensive guidelines for writing correct Chalk code b
 
 **For additional help:** Use https://docs.chalk.ai or review examples at https://github.com/chalk-ai/examples to learn.
 
+A lot of actions can also be performed by the `chalk` cli: `chalk query ...`, `chalk 
+
 ## What is Chalk?
 
 Chalk is a programmable feature engine that powers low-latency inference, rapid model iteration, and observability across the ML lifecycle. It eliminates core pain points in enterprise AI/ML systems by providing:
@@ -419,15 +421,13 @@ total_spent: Windowed[float] = windowed(
 -- resolves: User
 
 -- Optional configurations
--- type: online|offline|streaming
--- count: 1|one|one_or_none|all
+-- type: online|offline
 -- timeout: 5m
--- cron: 0 0 * * *
 -- owner: engineer@company.com
 -- tags: ['user', 'profile']
 -- environment: 'production'
 
-select id, name, email from users where id = $\{user.id}
+select id, name, email from users
 ```
 
 ### Incremental Queries
@@ -682,24 +682,6 @@ client.register_model_version(
     additional_files=["./tokenizer.json"],
     metadata={"framework": "pytorch"},
 )
-```
-
-### LLM Integration
-```python
-import chalk.prompts as P
-from chalk.features import features
-
-@features
-class Document:
-    id: str
-    content: str
-    summary: str = P.completion(
-        model="gpt-4o-mini",
-        messages=[P.message(
-            role="user",
-            content="Summarize this document: {{Document.content}}"
-        )]
-    )
 ```
 
 ## Query Patterns
