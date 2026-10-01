@@ -120,11 +120,6 @@ from chalk import online, offline
 @online
 def get_email_domain(email: User.email) -> User.email_domain:
     return email.split('@')[1].lower()
-
-@offline
-def batch_credit_scores() -> DataFrame[User.id, User.credit_score]:
-    # Process large batches of data
-    return DataFrame.read_csv("credit_scores.csv")
 ```
 
 **Key Rules:**
