@@ -30,4 +30,6 @@ idea
 .github
 
 schema.md
-
+data/
+scripts/
+examples/

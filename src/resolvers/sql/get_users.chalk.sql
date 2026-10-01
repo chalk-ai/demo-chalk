@@ -1,4 +1,4 @@
--- source: pg
+-- source: postgres
 -- resolves: User
 -- type: online
 

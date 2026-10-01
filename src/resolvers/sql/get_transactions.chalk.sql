@@ -1,4 +1,4 @@
--- source: pg
+-- source: postgres
 -- resolves: Transaction
 -- type: online
 

@@ -1,3 +1,3 @@
 from chalk.sql import PostgreSQLSource
 
-pg = PostgreSQLSource(name="pg")
+pg = PostgreSQLSource(name="postgres")
