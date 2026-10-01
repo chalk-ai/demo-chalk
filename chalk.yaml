@@ -3,3 +3,4 @@ environments:
     default:
         runtime: python312
         requirements: pyproject.toml
+        platform_version: v3.43.49

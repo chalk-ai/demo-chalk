@@ -8,6 +8,7 @@ requires-python = ">=3.11"
 dependencies = [
   "chalkdf>=3.43.14",
   "chalkpy[postgresql,runtime]",
+ "chalkcompute"
 ]
 
 [tool.uv]
@@ -20,6 +21,8 @@ dev-dependencies = [
   "ipython>=8.37.0",
   "jupyter>=1.1.1",
   "ipykernel>=6.29.5",
+  "torch",
+  "onnxruntime",
 ]
 
 [tool.pytest.ini_options]
