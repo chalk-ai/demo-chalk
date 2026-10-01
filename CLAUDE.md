@@ -12,10 +12,6 @@ Fetch these URLs when you need detailed API references, examples, or information
 
 This document provides comprehensive guidelines for writing correct Chalk code based on the official Chalk documentation.
 
-**For additional help:** Use https://docs.chalk.ai or review examples at https://github.com/chalk-ai/examples to learn.
-
-A lot of actions can also be performed by the `chalk` cli: `chalk query ...`, `chalk 
-
 ## What is Chalk?
 
 Chalk is a programmable feature engine that powers low-latency inference, rapid model iteration, and observability across the ML lifecycle. It eliminates core pain points in enterprise AI/ML systems by providing:

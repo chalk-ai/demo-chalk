@@ -18,6 +18,7 @@
 </table>
 
 # Demo Chalk Sandbox
+
 Chalk is the platform for production AI. Define features, prompts, and models in
 pure Python, serve them with low-latency online queries, build point-in-time
 correct training sets with offline queries, and run agents and batch jobs in
