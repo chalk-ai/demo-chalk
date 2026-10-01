@@ -39,6 +39,18 @@ class Transaction:
     # Processing fee calculated from transaction amount
     processing_fee: float
 
+    # Model inference (deployed by examples/deploy_model.py)
+    # Probability (0 to 1) that the transaction is an anomaly
+    # Inputs must match FEATURES order in examples/train.py. Bools are cast to
+    # floats because the model server can't convert boolean columns.
+    anomaly_score: float = F.catalog_call(
+        "model.transaction-anomaly",
+        _.amount,
+        _.processing_fee,
+        F.cast(_.is_small, float),
+        F.cast(_.is_night, float),
+    )
+
 
 @features
 class CreditReport:
