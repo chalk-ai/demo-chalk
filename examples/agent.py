@@ -12,6 +12,8 @@ import sys
 from chalk.client import ChalkClient
 from openai import OpenAI
 
+CHALK_API_HOST = os.environ.get("CHALK_API_HOST", "https://api.chalk.ai")
+
 SYSTEM_PROMPT = (
     "You are a fraud analyst for a financial services company. "
     "You evaluate user accounts to decide whether they are fraudulent, suspicious, or clean. "
@@ -76,7 +78,7 @@ TOOLS = [
 
 
 def run_agent(
-    openai_client, messages: list, handlers: dict, model: str = "gpt-5.5"
+    openai_client, messages: list, handlers: dict, model: str
 ) -> str:
     steps = []
     while True:
@@ -122,9 +124,15 @@ def run_agent(
 
 
 user_id = int(sys.argv[1])
+model = sys.argv[2] if len(sys.argv) > 2 else "anthropic/claude-opus-4-6"
 
 chalk_client = ChalkClient()
-openai_client = OpenAI(api_key=os.environ["OPENAI_API_KEY"], max_retries=10)
+openai_client = OpenAI(
+    base_url=f"{CHALK_API_HOST}/v1/router",
+    api_key=os.environ["CHALK_ROUTER_API_KEY"],
+    default_headers={"X-Chalk-Env-Id": os.environ["CHALK_ENVIRONMENT_ID"]},
+    max_retries=10,
+)
 
 
 def get_chalk_features(inp: dict) -> str:
@@ -151,5 +159,6 @@ print(
         openai_client,
         messages,
         handlers={"get_chalk_features": get_chalk_features},
+        model=model,
     )
 )

@@ -33,11 +33,11 @@ sandbox = Sandbox(
     image=image,
     name=f"fraud-agent-{uuid.uuid4().hex[:8]}",
     secrets=[
-        Secret.from_chalk_env("OPENAI_API_KEY"),
+        Secret.from_chalk_env("CHALK_ROUTER_API_KEY"),
     ],
     chalk_identity=True,
     network_policy=NetworkPolicy(
-        allowed_hosts=["api.openai.com", "*.chalk.ai"],
+        allowed_hosts=["*.chalk.ai"],
     ),
     cpu="1",
     memory="2Gi",
