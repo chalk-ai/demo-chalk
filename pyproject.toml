@@ -6,6 +6,7 @@ description = "Chalk pilot for Demo Chalk"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+  "chalkdf>=3.43.14",
   "chalkpy[postgresql,runtime]",
  "chalkcompute"
 ]
