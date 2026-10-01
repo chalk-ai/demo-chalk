@@ -28,6 +28,8 @@ so you can go from notebook to production without rewriting your pipeline.
 This repo is a small fraud-detection example you can deploy, query, and extend
 to learn the core workflow.
 
+You can also use a Chalk Notebook such as [this](https://chalk.ai/projects/demofytgpusgt/environments/demo46428d94/notebooks/cmupys9lw0dqg01xlcqy1kr0p#cell-cmuq0zov10f1f01xl1ryi6h6m) one to explore the environment and its data.
+
 ---
 
 ## Table of Contents
@@ -192,6 +194,12 @@ _Query the other side of the join, from a `Transaction`:_
 ```sh
 chalk query --in transaction.id=1 \
   --out transaction.amount,transaction.status,transaction.processing_fee,transaction.is_night
+```
+_Query for the output of a deployed anomoly detection model for `Transaction`:_
+
+```sh
+chalk query --in transaction.id=985 \
+  --out transaction.anomaly_score
 ```
 
 _Query against a branch deployment instead of the main deployment:_
