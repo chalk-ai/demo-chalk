@@ -15,7 +15,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from chalk.client import ChalkClient
-from chalkcompute import Image, training
+from chalkcompute import Image
+
+# Not `from chalkcompute import training`: inside the training container that
+# name resolves to the chalkcompute.training package, not the decorator
+from chalkcompute._training import training
 
 MODEL_NAME = "transaction-anomaly"
 
